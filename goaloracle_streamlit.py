@@ -91,7 +91,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 try:
-    logo = Image.open("Goal Oracle.png").convert("RGBA")
+    logo = Image.open("Guluguluoracle.png").convert("RGBA")
     size = (130, 130)
     logo = logo.resize(size)
 
@@ -201,4 +201,5 @@ st.markdown("---")
 st.caption("GoalOracle — Poisson-based score prediction using the 'Goals Scored' inputs as λ for each team.")
 st.markdown("[Visit GoalOracle GitHub](https://github.com/Rithukrish26/GoalOracle---Streamlit/tree/main)")
 st.markdown("[GoalOracle for Mobile Phones](https://goaloracle---mobile.streamlit.app)")
+
 
