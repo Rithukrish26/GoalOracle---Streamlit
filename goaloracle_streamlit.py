@@ -103,7 +103,7 @@ try:
 
     # create final framed logo on transparent background
     frame_size = 6
-    frame_color = (255, 253, 208, 255)
+    frame_color = (0, 102, 255, 255)
     framed_size = (size[0] + frame_size * 2, size[1] + frame_size * 2)
     framed = Image.new("RGBA", framed_size, (0, 0, 0, 0))
     draw_frame = ImageDraw.Draw(framed)
@@ -201,5 +201,6 @@ st.markdown("---")
 st.caption("GoalOracle — Poisson-based score prediction using the 'Goals Scored' inputs as λ for each team.")
 st.markdown("[Visit GoalOracle GitHub](https://github.com/Rithukrish26/GoalOracle---Streamlit/tree/main)")
 st.markdown("[GoalOracle for Mobile Phones](https://goaloracle---mobile.streamlit.app)")
+
 
 
