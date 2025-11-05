@@ -77,7 +77,7 @@ logo = Image.open("Guluguluoracleaura.png")
 
 # Resize proportionally
 width, height = logo.size
-scale_factor = 0.5  # 50% of original size
+scale_factor = 1.4
 new_width = int(width * scale_factor)
 new_height = int(height * scale_factor)
 logo = logo.resize((new_width, new_height))
@@ -168,6 +168,7 @@ st.markdown("---")
 st.caption("GoalOracle — Poisson-based score prediction using the 'Goals Scored' inputs as λ for each team.")
 st.markdown("[Visit GoalOracle GitHub](https://github.com/Rithukrish26/GoalOracle---Streamlit/tree/main)")
 st.markdown("[GoalOracle for Mobile Phones](https://goaloracle---mobile.streamlit.app)")
+
 
 
 
