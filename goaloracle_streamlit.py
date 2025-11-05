@@ -68,79 +68,18 @@ button:hover {
 import base64
 from io import BytesIO
 
-st.markdown("""
-<style>
-.header-inline {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    gap: 20px;
-    margin-top: -65px;
-}
-.header-inline img {
-    border-radius: 50%;
-    border: 4px solid rgb(255, 253, 208);
-}
-.header-inline h1 {
-    font-size: 2.4em;
-    margin: 0;
-    font-weight: 600;
-}
-</style>
-""", unsafe_allow_html=True)
+st.set_page_config(page_title="GoalOracle", layout="wide")
 
-try:
-    # Load logo with transparency and resize (no mask, no frame)
-    logo = Image.open("Guluguluoracle-removebg-preview.png").convert("RGBA")
-    size = (130, 130)
-    logo = logo.resize(size)
+# Center and enlarge the logo — no border, no circle
+col1, col2, col3 = st.columns([1, 2, 1])
+with col2:
+    st.image("Guluguluoracle-removebg-preview.png", use_container_width=True)
 
-    # Convert to base64 for HTML embedding
-    import base64
-    from io import BytesIO
-    buffered = BytesIO()
-    logo.save(buffered, format="PNG")
-    encoded_logo = base64.b64encode(buffered.getvalue()).decode()
+# Optional spacing
+st.markdown("<br><br>", unsafe_allow_html=True)
 
-    # Clean centered corporate header
-    st.markdown(
-        f"""
-        <style>
-        .header-inline {{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            gap: 20px;
-            margin-top: -55px;
-        }}
-        .header-inline img {{
-            width: 130px;
-            height: auto;
-            border-radius: 0px; /* No round edges */
-            border: none;       /* No frame */
-        }}
-        .header-inline h1 {{
-            font-size: 2.4em;
-            margin: 0;
-            font-weight: 600;
-            color: #003366;
-        }}
-        </style>
-
-        <div class='header-inline'>
-            <img src='data:image/png;base64,{encoded_logo}' alt='GoalOracle Logo'>
-            <h1>GoalOracle ⚽ — Predict the Unpredictable</h1>
-        </div>
-        <hr style='margin-top:10px;'>
-        """,
-        unsafe_allow_html=True
-    )
-
-except Exception as e:
-    st.error(f"Logo could not be displayed: {e}")
-
+# Add your app content below (inputs, buttons, etc.)
+st.write("Welcome to GoalOracle!")
 # --- Layout Columns --------------------------------------------------------
 
 col1, col3 = st.columns(2)
@@ -212,6 +151,7 @@ st.markdown("---")
 st.caption("GoalOracle — Poisson-based score prediction using the 'Goals Scored' inputs as λ for each team.")
 st.markdown("[Visit GoalOracle GitHub](https://github.com/Rithukrish26/GoalOracle---Streamlit/tree/main)")
 st.markdown("[GoalOracle for Mobile Phones](https://goaloracle---mobile.streamlit.app)")
+
 
 
 
