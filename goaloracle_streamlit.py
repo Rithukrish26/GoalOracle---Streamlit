@@ -56,8 +56,8 @@ button[kind="secondary"], button[kind="primary"] {
     transition: all 0.3s ease !important;
 }
 button:hover {
-    box-shadow: 0px 0px 20px rgba(255, 253, 208, 0.7) !important;
-    background-color: #f5f5dc !important;
+    box-shadow: 0px 0px 20px rgba(0,208,192, 0.7) !important;
+    background-color: #00D0C0 !important;
     color: black !important;
 }
 </style>
@@ -168,6 +168,7 @@ st.markdown("---")
 st.caption("GoalOracle — Poisson-based score prediction using the 'Goals Scored' inputs as λ for each team.")
 st.markdown("[Visit GoalOracle GitHub](https://github.com/Rithukrish26/GoalOracle---Streamlit/tree/main)")
 st.markdown("[GoalOracle for Mobile Phones](https://goaloracle---mobile.streamlit.app)")
+
 
 
 
