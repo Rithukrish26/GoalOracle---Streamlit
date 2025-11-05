@@ -65,23 +65,33 @@ button:hover {
 
 # --- Header Section (Visible Logo + Inline Title) --------------------------
 
+import streamlit as st
+from PIL import Image
 import base64
 from io import BytesIO
 
 st.set_page_config(page_title="GoalOracle", layout="wide")
 
+# Load and resize logo
 logo = Image.open("Guluguluoracleaura.png")
 logo = logo.resize((280, 71))  # width, height
 
+# Convert to base64 for embedding
 buffer = BytesIO()
 logo.save(buffer, format="PNG")
-encoded_logo = buffer.getvalue()
+encoded_logo = base64.b64encode(buffer.getvalue()).decode()
 
 # Center the image using HTML
 st.markdown(
     f"""
-    <div style="display: flex; justify-content: center; align-items: center; margin-top: -20px; margin-bottom: -10px;">
-        <img src="data:image/png;base64,{encoded_logo.decode('latin1')}" width="280" height="70">
+    <div style="
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: -10px;
+        margin-bottom: -20px;
+    ">
+        <img src="data:image/png;base64,{encoded_logo}" width="280" height="71">
     </div>
     """,
     unsafe_allow_html=True
@@ -158,6 +168,7 @@ st.markdown("---")
 st.caption("GoalOracle — Poisson-based score prediction using the 'Goals Scored' inputs as λ for each team.")
 st.markdown("[Visit GoalOracle GitHub](https://github.com/Rithukrish26/GoalOracle---Streamlit/tree/main)")
 st.markdown("[GoalOracle for Mobile Phones](https://goaloracle---mobile.streamlit.app)")
+
 
 
 
