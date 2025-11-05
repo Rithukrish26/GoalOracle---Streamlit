@@ -91,28 +91,16 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 try:
-    logo = Image.open("Guluguluoracle.png").convert("RGBA")
+    # Load logo normally, no circular mask or frame
+    logo = Image.open("Goal Oracle.png").convert("RGBA")
     size = (130, 130)
     logo = logo.resize(size)
 
-    # circular mask
-    mask = Image.new("L", size, 0)
-    draw = ImageDraw.Draw(mask)
-    draw.ellipse((0, 0, size[0], size[1]), fill=255)
-    logo.putalpha(mask)
-
-    # create final framed logo on transparent background
-    frame_size = 6
-    frame_color = (0, 102, 255, 255)
-    framed_size = (size[0] + frame_size * 2, size[1] + frame_size * 2)
-    framed = Image.new("RGBA", framed_size, (0, 0, 0, 0))
-    draw_frame = ImageDraw.Draw(framed)
-    draw_frame.ellipse((0, 0, framed_size[0]-1, framed_size[1]-1), fill=frame_color)
-    framed.paste(logo, (frame_size, frame_size), logo)
-
-    # convert logo to base64
+    # Convert to base64 for HTML embedding
+    import base64
+    from io import BytesIO
     buffered = BytesIO()
-    framed.save(buffered, format="PNG")
+    logo.save(buffered, format="PNG")
     encoded_logo = base64.b64encode(buffered.getvalue()).decode()
 
     st.markdown(
@@ -128,7 +116,6 @@ try:
 
 except Exception as e:
     st.error(f"Logo could not be displayed: {e}")
-
 
 # --- Layout Columns --------------------------------------------------------
 
@@ -201,6 +188,7 @@ st.markdown("---")
 st.caption("GoalOracle — Poisson-based score prediction using the 'Goals Scored' inputs as λ for each team.")
 st.markdown("[Visit GoalOracle GitHub](https://github.com/Rithukrish26/GoalOracle---Streamlit/tree/main)")
 st.markdown("[GoalOracle for Mobile Phones](https://goaloracle---mobile.streamlit.app)")
+
 
 
 
