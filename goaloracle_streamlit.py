@@ -91,8 +91,8 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 try:
-    # Load logo normally, no circular mask or frame
-    logo = Image.open("Guluguluoracle.png").convert("RGBA")
+    # Load logo with transparency and resize (no mask, no frame)
+    logo = Image.open("Guluguluoracle-removebg-preview.png").convert("RGBA")
     size = (130, 130)
     logo = logo.resize(size)
 
@@ -103,13 +103,37 @@ try:
     logo.save(buffered, format="PNG")
     encoded_logo = base64.b64encode(buffered.getvalue()).decode()
 
+    # Clean centered corporate header
     st.markdown(
         f"""
+        <style>
+        .header-inline {{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            gap: 20px;
+            margin-top: -55px;
+        }}
+        .header-inline img {{
+            width: 130px;
+            height: auto;
+            border-radius: 0px; /* No round edges */
+            border: none;       /* No frame */
+        }}
+        .header-inline h1 {{
+            font-size: 2.4em;
+            margin: 0;
+            font-weight: 600;
+            color: #003366;
+        }}
+        </style>
+
         <div class='header-inline'>
-            <img src='data:image/png;base64,{encoded_logo}' width='130'>
+            <img src='data:image/png;base64,{encoded_logo}' alt='GoalOracle Logo'>
             <h1>GoalOracle ⚽ — Predict the Unpredictable</h1>
         </div>
-        <hr>
+        <hr style='margin-top:10px;'>
         """,
         unsafe_allow_html=True
     )
@@ -188,6 +212,7 @@ st.markdown("---")
 st.caption("GoalOracle — Poisson-based score prediction using the 'Goals Scored' inputs as λ for each team.")
 st.markdown("[Visit GoalOracle GitHub](https://github.com/Rithukrish26/GoalOracle---Streamlit/tree/main)")
 st.markdown("[GoalOracle for Mobile Phones](https://goaloracle---mobile.streamlit.app)")
+
 
 
 
