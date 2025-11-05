@@ -71,7 +71,7 @@ from io import BytesIO
 st.set_page_config(page_title="GoalOracle", layout="wide")
 
 logo = Image.open("Guluguluoracleaura.png")
-logo = logo.resize((250, 250))  # width, height
+logo = logo.resize((280, 71))  # width, height
 st.image(logo)
 # Optional spacing
 st.markdown("<br><br>", unsafe_allow_html=True)
@@ -147,6 +147,7 @@ st.markdown("---")
 st.caption("GoalOracle — Poisson-based score prediction using the 'Goals Scored' inputs as λ for each team.")
 st.markdown("[Visit GoalOracle GitHub](https://github.com/Rithukrish26/GoalOracle---Streamlit/tree/main)")
 st.markdown("[GoalOracle for Mobile Phones](https://goaloracle---mobile.streamlit.app)")
+
 
 
 
