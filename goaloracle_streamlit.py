@@ -70,16 +70,12 @@ from io import BytesIO
 
 st.set_page_config(page_title="GoalOracle", layout="wide")
 
-# Center and enlarge the logo — no border, no circle
-col1, col2, col3 = st.columns([1, 2, 1])
-with col2:
-    st.image("Guluguluoracleaura.png", use_container_width=True)
-
+logo = Image.open("Guluguluoracleaura.png")
+logo = logo.resize((250, 250))  # width, height
+st.image(logo)
 # Optional spacing
 st.markdown("<br><br>", unsafe_allow_html=True)
 
-# Add your app content below (inputs, buttons, etc.)
-st.write("Welcome to GoalOracle!")
 # --- Layout Columns --------------------------------------------------------
 
 col1, col3 = st.columns(2)
@@ -151,6 +147,7 @@ st.markdown("---")
 st.caption("GoalOracle — Poisson-based score prediction using the 'Goals Scored' inputs as λ for each team.")
 st.markdown("[Visit GoalOracle GitHub](https://github.com/Rithukrish26/GoalOracle---Streamlit/tree/main)")
 st.markdown("[GoalOracle for Mobile Phones](https://goaloracle---mobile.streamlit.app)")
+
 
 
 
