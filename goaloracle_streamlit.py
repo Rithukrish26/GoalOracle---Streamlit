@@ -72,9 +72,10 @@ st.set_page_config(page_title="GoalOracle", layout="wide")
 
 logo = Image.open("Guluguluoracleaura.png")
 logo = logo.resize((280, 71))  # width, height
-st.image(logo)
-# Optional spacing
-st.markdown("<br><br>", unsafe_allow_html=True)
+
+col1, col2, col3 = st.columns([1, 2, 1])
+with col2:
+    st.image(logo, use_container_width=False)
 
 # --- Layout Columns --------------------------------------------------------
 
@@ -147,6 +148,7 @@ st.markdown("---")
 st.caption("GoalOracle — Poisson-based score prediction using the 'Goals Scored' inputs as λ for each team.")
 st.markdown("[Visit GoalOracle GitHub](https://github.com/Rithukrish26/GoalOracle---Streamlit/tree/main)")
 st.markdown("[GoalOracle for Mobile Phones](https://goaloracle---mobile.streamlit.app)")
+
 
 
 
