@@ -72,26 +72,26 @@ from io import BytesIO
 
 st.set_page_config(page_title="GoalOracle", layout="wide")
 
-# Load and resize logo
+# Load image
 logo = Image.open("Guluguluoracleaura.png")
-logo = logo.resize((480, 120))  # width, height
 
-# Convert to base64 for embedding
-buffer = BytesIO()
-logo.save(buffer, format="PNG")
-encoded_logo = base64.b64encode(buffer.getvalue()).decode()
+# Resize proportionally
+width, height = logo.size
+scale_factor = 0.5  # 50% of original size
+new_width = int(width * scale_factor)
+new_height = int(height * scale_factor)
+logo = logo.resize((new_width, new_height))
 
-# Center the image using HTML
+# Convert to base64
+buffered = BytesIO()
+logo.save(buffered, format="PNG")
+encoded_logo = base64.b64encode(buffered.getvalue()).decode()
+
+# Display centered with proper size
 st.markdown(
     f"""
-    <div style="
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: -10px;
-        margin-bottom: -20px;
-    ">
-        <img src="data:image/png;base64,{encoded_logo}" width="280" height="71">
+    <div style="display: flex; justify-content: center; align-items: center; margin-top: -20px; margin-bottom: -10px;">
+        <img src="data:image/png;base64,{encoded_logo}" width="{new_width}" height="{new_height}">
     </div>
     """,
     unsafe_allow_html=True
@@ -168,6 +168,7 @@ st.markdown("---")
 st.caption("GoalOracle — Poisson-based score prediction using the 'Goals Scored' inputs as λ for each team.")
 st.markdown("[Visit GoalOracle GitHub](https://github.com/Rithukrish26/GoalOracle---Streamlit/tree/main)")
 st.markdown("[GoalOracle for Mobile Phones](https://goaloracle---mobile.streamlit.app)")
+
 
 
 
