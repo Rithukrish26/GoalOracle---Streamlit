@@ -127,10 +127,7 @@ st.markdown("</div>", unsafe_allow_html=True)
 # --- Logic -----------------------------------------------------------------
 
 if reset:
-    for k in ["ta_goals", "tb_goals"]:
-        if k in st.session_state:
-            st.session_state[k] = 0.0
-    st.experimental_rerun()
+    st.button("Reset", on_click=reset_inputs)
 
 if predict:
     try:
@@ -168,3 +165,4 @@ st.markdown("---")
 st.caption("GoalOracle — Poisson-based score prediction using the 'Goals Scored' inputs as λ for each team.")
 st.markdown("[Visit GoalOracle GitHub](https://github.com/Rithukrish26/GoalOracle---Streamlit/tree/main)")
 st.markdown("[GoalOracle for Mobile Phones](https://goaloracle---mobile.streamlit.app)")
+
