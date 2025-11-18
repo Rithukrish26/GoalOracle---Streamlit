@@ -70,13 +70,6 @@ button:hover {
 </style>
 """, unsafe_allow_html=True)
 
-st.markdown("<div class='center-buttons'>", unsafe_allow_html=True)
-
-predict = st.button("Predict", key="predict_btn")
-reset = st.button("Reset", key="reset_btn", on_click=reset_inputs)
-
-st.markdown("</div>", unsafe_allow_html=True)
-
 # --- Header Section --------------------------
 
 import streamlit as st
@@ -176,5 +169,6 @@ st.markdown("---")
 st.caption("GoalOracle — Poisson-based score prediction using the 'Goals Scored' inputs as λ for each team.")
 st.markdown("[Visit GoalOracle GitHub](https://github.com/Rithukrish26/GoalOracle---Streamlit/tree/main)")
 st.markdown("[GoalOracle for Mobile Phones](https://goaloracle---mobile.streamlit.app)")
+
 
 
