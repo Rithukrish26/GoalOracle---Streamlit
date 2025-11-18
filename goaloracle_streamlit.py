@@ -25,6 +25,13 @@ def most_probable_score(prob_matrix):
     idx = np.unravel_index(np.argmax(prob_matrix), prob_matrix.shape)
     return idx, prob_matrix[idx]
 
+def reset_inputs():
+    st.session_state["ta_goals"] = 1.2
+    st.session_state["tb_goals"] = 1.0
+    for key in ["ta_conceded", "ta_sot", "ta_chances", "ta_poss", "ta_pass",
+                "tb_conceded", "tb_sot", "tb_chances", "tb_poss", "tb_pass"]:
+        st.session_state[key] = 0.0
+
 # --- Custom CSS ------------------------------------------------------------
 
 st.markdown("""
@@ -63,7 +70,14 @@ button:hover {
 </style>
 """, unsafe_allow_html=True)
 
-# --- Header Section (Visible Logo + Inline Title) --------------------------
+st.markdown("<div class='center-buttons'>", unsafe_allow_html=True)
+
+predict = st.button("Predict", key="predict_btn")
+reset = st.button("Reset", key="reset_btn", on_click=reset_inputs)
+
+st.markdown("</div>", unsafe_allow_html=True)
+
+# --- Header Section --------------------------
 
 import streamlit as st
 from PIL import Image
@@ -87,7 +101,7 @@ buffered = BytesIO()
 logo.save(buffered, format="PNG")
 encoded_logo = base64.b64encode(buffered.getvalue()).decode()
 
-# Display centered with proper size
+# Display
 st.markdown(
     f"""
     <div style="display: flex; justify-content: center; align-items: center; margin-top: -20px; margin-bottom: -10px;">
@@ -126,9 +140,6 @@ st.markdown("</div>", unsafe_allow_html=True)
 
 # --- Logic -----------------------------------------------------------------
 
-if reset:
-    st.button("Reset", on_click=reset_inputs)
-
 if predict:
     try:
         lambda_a = float(ta_goals)
@@ -165,4 +176,5 @@ st.markdown("---")
 st.caption("GoalOracle — Poisson-based score prediction using the 'Goals Scored' inputs as λ for each team.")
 st.markdown("[Visit GoalOracle GitHub](https://github.com/Rithukrish26/GoalOracle---Streamlit/tree/main)")
 st.markdown("[GoalOracle for Mobile Phones](https://goaloracle---mobile.streamlit.app)")
+
 
